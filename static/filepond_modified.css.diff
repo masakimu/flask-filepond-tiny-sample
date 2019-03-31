@@ -1,0 +1,187 @@
+diff -u /Users/murasemasaki/Documents/shimadzu/SALSA/Asynchronous-File-Upload-and-Display-with-Flask-master/FilePondSampleFlask/static/filepond.orig.css /Users/murasemasaki/Documents/shimadzu/SALSA/Asynchronous-File-Upload-and-Display-with-Flask-master/FilePondSampleFlask/static/filepond_modified.css
+--- /Users/murasemasaki/Documents/shimadzu/SALSA/Asynchronous-File-Upload-and-Display-with-Flask-master/FilePondSampleFlask/static/filepond.orig.css	2019-03-25 17:45:26.000000000 +0900
++++ /Users/murasemasaki/Documents/shimadzu/SALSA/Asynchronous-File-Upload-and-Display-with-Flask-master/FilePondSampleFlask/static/filepond_modified.css	2019-03-31 11:05:20.000000000 +0900
+@@ -59,19 +59,21 @@
+ }
+ 
+ .filepond--drop-label {
+-  position: absolute;
++/*  position: absolute;
++  top: 0;
++  margin: 0;*/
+   left: 0;
+   right: 0;
+-  top: 0;
+-  margin: 0;
+   color: #4f4f4f;
+-  display: -ms-flexbox;
++  background-color: rgba(231, 245, 248, 1);
++  border-radius: 2em;
++/*  display: -ms-flexbox;*/
+   display: flex;
+-  -ms-flex-pack: center;
+   justify-content: center;
+-  -ms-flex-align: center;
+   align-items: center;
+   height: 0px;
++  -ms-flex-pack: center;
++  -ms-flex-align: center;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+@@ -88,7 +90,7 @@
+ 
+ .filepond--drop-label label {
+   cursor: default;
+-  font-size: 0.875em;
++  font-size: 0.9em;
+   font-weight: normal;
+   text-align: center;
+   line-height: 1.5;
+@@ -174,7 +176,7 @@
+   margin: 0;
+ }
+ .filepond--file-info .filepond--file-info-main {
+-  font-size: 0.75em;
++  font-size: 1em;
+   line-height: 1.2;
+   text-overflow: ellipsis;
+   overflow: hidden;
+@@ -182,7 +184,7 @@
+   width: 100%;
+ }
+ .filepond--file-info .filepond--file-info-sub {
+-  font-size: 0.625em;
++  font-size: 0.75em;
+   opacity: 0.5;
+   transition: opacity 0.25s ease-in-out;
+   white-space: nowrap;
+@@ -466,12 +468,12 @@
+ }
+ 
+ .filepond--hopper[data-hopper-state='drag-over']::after {
+-  content: '';
++/*  content: '';
+   position: absolute;
+   left: 0;
+   top: 0;
+   right: 0;
+-  bottom: 0;
++  bottom: 0;*/
+   z-index: 100;
+ }
+ 
+@@ -492,10 +494,10 @@
+ }
+ 
+ .filepond--item {
+-  position: absolute;
++/*  position: absolute;
+   top: 0;
+   left: 0;
+-  right: 0;
++  right: 0;*/
+   z-index: 1;
+   padding: 0;
+   margin: 0.25em;
+@@ -509,11 +511,11 @@
+ }
+ 
+ .filepond--item-panel {
+-  background-color: #64605e;
++  background-color: #a4a09e;
+ }
+ 
+ [data-filepond-item-state='processing-complete'] .filepond--item-panel {
+-  background-color: #369763;
++  background-color: #36a7a3;
+ }
+ 
+ [data-filepond-item-state*='invalid'] .filepond--item-panel,
+@@ -595,20 +597,20 @@
+ 
+ .filepond--root[data-style-panel-layout~='circle'] .filepond--panel-root,
+ .filepond--root[data-style-panel-layout~='integrated'] .filepond--panel-root {
+-  border-radius: 0;
++  border-radius: 0;    
+ }
+ .filepond--root[data-style-panel-layout~='circle'] .filepond--panel-root > *,
+ .filepond--root[data-style-panel-layout~='integrated']
+   .filepond--panel-root
+   > * {
+   display: none;
+-}
++ }
+ 
+ .filepond--root[data-style-panel-layout~='circle'] .filepond--drop-label,
+ .filepond--root[data-style-panel-layout~='integrated'] .filepond--drop-label {
+   bottom: 0;
+   height: auto;
+-  display: -ms-flexbox;
++/*  display: -ms-flexbox;*/
+   display: flex;
+   -ms-flex-pack: center;
+   justify-content: center;
+@@ -667,7 +669,7 @@
+ 
+ .filepond--panel-root {
+   border-radius: 0.5em;
+-   background-color: #f1f0ef; 
++ /* background-color: #f1f0ef;*/
+ }
+ 
+ .filepond--panel {
+@@ -699,8 +701,8 @@
+ .filepond--panel-bottom,
+ .filepond--panel-center {
+   position: absolute;
+-  left: 0;
+   top: 0;
++  left: 0;
+   right: 0;
+   margin: 0;
+   padding: 0;
+@@ -717,8 +719,8 @@
+   border-bottom: none !important;
+ }
+ .filepond--panel-top::after {
+-  content: '';
+-  position: absolute;
++/*  content: '';
++  position: absolute;*/
+   height: 2px;
+   left: 0;
+   right: 0;
+@@ -743,8 +745,8 @@
+   border-top: none !important;
+ }
+ .filepond--panel-bottom::before {
+-  content: '';
+-  position: absolute;
++/*  content: '';
++  position: absolute;*/
+   height: 2px;
+   left: 0;
+   right: 0;
+@@ -810,7 +812,7 @@
+   position: relative;
+   margin-bottom: 1em;
+   /* base font size for whole component */
+-  font-size: 1rem;
++  font-size: 1em;
+   /* base line height */
+   line-height: normal;
+   /* up uses default system font family */
+@@ -821,7 +823,9 @@
+   text-align: left;
+   text-rendering: optimizeLegibility;
+   direction: ltr;
+-  contain: layout style size;
++/*  contain: layout style size;*/
++  background-color: rgba(231, 245, 248, 1);
++  border-radius: 2rem;
+ }
+ .filepond--root * {
+   font-size: inherit;
+
+Diff finished.  Sun Mar 31 11:05:29 2019

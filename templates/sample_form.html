@@ -1,0 +1,125 @@
+<html>
+    <head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <link href={{url_for("static", filename="filepond_modified.css")}} rel="stylesheet">
+      
+  </head>
+<body>
+    <div id="form_error_message" style="color: #ff0000;">
+    </div>
+    <div class="flashes" style="color: #ff0000;">
+	{% for message in get_flashed_messages() %}
+	{{ message }}
+	{% endfor %}
+    </div>
+
+<div>
+   <p> </p>
+</div>
+
+<div class ="container">
+    <form action="/" method="post" enctype="multipart/form-data">
+	{{form.hidden_tag()}}
+	<div class="row">
+	    <div class="col-md-2"></div>
+	    <div class="col-md-8">
+		<p id="name_input" class="paragraph hoge" >
+		    {{form.name(tab="first")}}
+		</p>
+	    </div>
+	</div>
+	<div class="row">
+	    <div class="col-md-2"></div>
+	    <div class="col-md-6">
+		<input type="file" class="my-pond" name="filepond" />
+	    </div>
+	</div>
+	<div class="row">
+	    <div class="col-md-2"></div>
+	    <div class="col-md-8">
+		<div class='file_selection'></div>
+	    </div>
+	</div>
+	
+	<div class="row">
+	    <div class="col-md-2"></div>
+	    <div class="col-md-8">
+		<p id="submit" class="paragraph dondon">
+		    {{form.submit(tab="third")}}
+		</p>
+	    </div>
+	</div>
+    </form>
+</div>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+<script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+<script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!-- script src="{{ url_for("static", filename="js/page.js") }}" --> <!-- /script -->
+<script>
+    <!-- //
+  var tab_attr=""
+  $("input").each(function(index, elem) {
+    elem.addEventListener("invalid", function(e) {
+	if (tab_attr == ""){
+	    if(e.target.hasAttribute("tab")){
+		tab_attr = e.target.attributes["tab"].value;
+	    }
+	    message = "invalid input; see " + tab_attr + "(" + e.target.id +") @" + e.target.closest('p[class^="paragraph"]').id + "<br/>";
+	}
+	document.getElementById("form_error_message").innerHTML = message;
+    });
+  });
+  -->
+</script>
+<script>
+ <!-- //filepond
+  $(function(){
+
+      $.fn.filepond.registerPlugin(FilePondPluginFileValidateSize);
+      $.fn.filepond.setDefaults({
+	  maxFileSize: '200MB'
+      });
+      
+      
+      // Turn input element into a pond
+      $('.my-pond').filepond();
+      
+      // Turn input element into a pond with configuration options
+      $('.my-pond').filepond({
+          allowMultiple: false,
+      });
+      
+      $('.my-pond').on('FilePond:addfile', function(e) {
+          console.log('file added event', e);
+      });
+      
+      $('.my-pond').filepond.setOptions({
+	  server: {
+	      url: './',
+	      process: {
+		  url:'./upload',
+		  headers:{'X-CSRF-TOKEN': $('input[name="csrf_token"]').val()},
+		  onload: onResponse,
+	      },
+	  }
+      });
+
+      function onResponse(r){
+	  r=$.parseJSON(r);
+	  let filename=r.filename[0];
+	  console.log('filename by onload: '+filename);
+	  var $select=$(".file_selection");
+	  $select.empty(); // user
+	  var $input = $('<input type="radio" name="selected_file" value="' + filename +'" /> ').attr("checked", true)
+	  var $label=$('<label>'+filename+'</label> <br />')
+	  $select.append($input).append($label);
+      }
+  });
+ -->
+</script>
+</body>
+</html>
