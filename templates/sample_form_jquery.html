@@ -81,9 +81,8 @@
 
       $.fn.filepond.registerPlugin(FilePondPluginFileValidateSize);
       $.fn.filepond.setDefaults({
-	  maxFileSize: '200MB'
+	  maxFileSize: '1MB',
       });
-      
       
       // Turn input element into a pond
       $('.my-pond').filepond();
@@ -93,27 +92,28 @@
           allowMultiple: false,
       });
       
-      $('.my-pond').on('FilePond:addfile', function(e) {
-          console.log('file added event', e);
-      });
-      
       $('.my-pond').filepond.setOptions({
 	  server: {
 	      url: './',
 	      process: {
-		  url:'./upload',
+		  url:'./upload',  // flask data processing app
 		  headers:{'X-CSRF-TOKEN': $('input[name="csrf_token"]').val()},
 		  onload: onResponse,
 	      },
 	  }
       });
 
+      $('.my-pond').on('FilePond:addfile', function(e) {
+          console.log('file added event', e);
+      });
+      
       function onResponse(r){
+	  // create radio button with value of filename right after pond
 	  r=$.parseJSON(r);
 	  let filename=r.filename[0];
 	  console.log('filename by onload: '+filename);
 	  var $select=$(".file_selection");
-	  $select.empty(); // user
+	  $select.empty(); // clear child elements of $select
 	  var $input = $('<input type="radio" name="selected_file" value="' + filename +'" /> ').attr("checked", true)
 	  var $label=$('<label>'+filename+'</label> <br />')
 	  $select.append($input).append($label);
