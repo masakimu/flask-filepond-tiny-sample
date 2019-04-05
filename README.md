@@ -8,4 +8,4 @@ to test the sample, just run following commands in your python virtual environme
  $ pip install -r requirement.txt
  $ python sample_form.py
 ```
-you can see the sample web from http://localhost:8001/
+then, you can see the sample web from http://localhost:8001/
