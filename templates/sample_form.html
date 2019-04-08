@@ -6,6 +6,7 @@
 
       // Turn input element into a pond with configuration options
       pond = document.querySelector('.my-pond')
+      form_root = document.querySelector('.form-root')
       var filepond = FilePond.create(
 	  pond,
 	  {
@@ -22,7 +23,7 @@
 	  },
       );
       
-      pond.addEventListener('FilePond:addfile', e=> {
+      form_root.addEventListener('FilePond:addfile', e=> {
           console.log('File added', e.detail);
       });
       
