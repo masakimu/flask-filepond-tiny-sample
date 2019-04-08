@@ -55,15 +55,17 @@ def home():
     if form.validate_on_submit():
         upload_dir = 'upload_files'
         if 'selected_file' in request.form:
-            print(request.form['selected_file'])
+            print('Uploaded File Name: ', request.form['selected_file'])
         else:
-            flash('Upload Data File')
+            flash('No Uploaded File')
+            print('No Uploaded File')
+        print('Inputed String in Text Form: ' + form.name.data)
     else:
         flash_errors(form)
         print('no operation hogehoge')
         
-    return render_template('sample_form.html', form=form)
-#    return render_template('sample_form_jquery.html', form=form)
+#    return render_template('sample_form.html', form=form)
+    return render_template('sample_form_jquery.html', form=form)
         
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8001)

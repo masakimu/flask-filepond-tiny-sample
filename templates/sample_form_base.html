@@ -76,9 +76,9 @@
 		  if(e.target.hasAttribute("tab")){
 		      tab_attr = e.target.attributes["tab"].value;
 		  }
-		  message = "invalid input; see " + tab_attr + "(" + e.target.id +") @" + e.target.closest('p[class^="paragraph"]').id + "<br/>";
+		  message = "invalid input; see " + tab_attr + "(" + e.target.id +") @" + e.target.closest('p[class^="paragraph"]').id;
 	      }
-	      document.getElementById("form_error_message").innerHTML = message;
+	      document.getElementById("form_error_message").innerText = message;
 	  });
       });
       -->
