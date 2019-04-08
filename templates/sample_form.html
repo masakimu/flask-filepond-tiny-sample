@@ -3,16 +3,6 @@
 <script>
  <!-- //filepond
       FilePond.registerPlugin(FilePondPluginFileValidateSize);
-      FilePond.setOptions({
-	  server: {
-	      url: './',
-	      process: {
-		  url:'./upload',  // flask data processing app
-		  headers:{'X-CSRF-TOKEN': document.querySelector('input[name="csrf_token"]').getAttribute("value")},
-		  onload: onResponse,
-	      },
-	  }
-      });
 
       // Turn input element into a pond with configuration options
       pond = document.querySelector('.my-pond')
@@ -21,6 +11,14 @@
 	  {
 	      allowMultiple:false,
 	      maxFileSize: '1MB',
+	      server: {
+	      	url: './',
+	      	process: {
+			url:'./upload',  // flask data processing app
+		  	headers:{'X-CSRF-TOKEN': document.querySelector('input[name="csrf_token"]').getAttribute("value")},
+		  	onload: onResponse,
+	      	},
+	     },
 	  },
       );
       
