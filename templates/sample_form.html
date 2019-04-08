@@ -28,10 +28,10 @@
       });
       
       function onResponse(r){
+	  
+	  // create radio button with value of filename right after pond
 	  r=JSON.parse(r);
 	  let filename=r.filename[0];
-
-	  // create radio button with value of filename right after pond
 	  console.log('filename by onload: '+filename);
 
 	  file_selection = document.querySelector('.file_selection')
