@@ -64,8 +64,8 @@ def home():
         flash_errors(form)
         print('no operation hogehoge')
         
-#    return render_template('sample_form.html', form=form)
-    return render_template('sample_form_jquery.html', form=form)
+    return render_template('sample_form.html', form=form)
+#    return render_template('sample_form_jquery.html', form=form)
         
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8001)
