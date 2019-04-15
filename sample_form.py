@@ -31,13 +31,12 @@ def flash_errors(form):
 # uploaded data processing server for filepond javascript
 @app.route('/upload', methods=['POST'])
 def upload():
-    form = SampleForm()
-    
     upload_dir = 'upload_files'
     fn=""
     file_names=[]
-    for i,f in enumerate(request.files):
-        file = request.files.get(f)
+    # get file object from request.files (see: http://flask.pocoo.org/docs/1.0/api/#flask.Request.files)
+    for key in request.files: 
+        file = request.files[key]
         fn = secure_filename(file.filename)
         file_names.append(fn)
         print('filename: ', fn)
