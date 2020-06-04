@@ -1,5 +1,5 @@
 # flask-filepond
-tiny sample of flask application to upload file using  filepond javascript library.
+tiny but usable sample of flask application to upload file using  filepond javascript library.
 I modified style-sheet to put filepond between forms (but not completed).
 
 to test the sample, just run following commands in your python virtual environment: 
